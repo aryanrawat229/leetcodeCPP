@@ -4,19 +4,13 @@ public:
         int n = nums.size();
         int i = 0;
         while (i < n) {
-            if (nums[i] <= 0 || nums[i] > n) {
-                i++;
+            if (nums[i] > 0 && nums[i] <= n && nums[i] != nums[nums[i] - 1]) {
+                swap(nums[i], nums[nums[i] - 1]);
+                // int temp = nums[i];
+                // nums[i] = nums[correctindex];
+                // nums[correctindex] = temp;
             } else {
-                int correctindex = nums[i] - 1;
-                if (nums[i] > 0 && nums[i] <= n &&
-                    nums[i] != nums[correctindex]) {
-                        swap(nums[i], nums[correctindex]);
-                    // int temp = nums[i];
-                    // nums[i] = nums[correctindex];
-                    // nums[correctindex] = temp;
-                } else {
-                    i++;
-                }
+                i++;
             }
         }
 
