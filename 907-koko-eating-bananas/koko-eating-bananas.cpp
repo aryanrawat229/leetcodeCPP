@@ -1,10 +1,10 @@
 class Solution {
 public:
-    bool isPossible(vector<int>& piles, int h, int speed) {
+    bool isPossible(vector<int>& piles, int h, int mid) {
         long long hours = 0;
 
         for (int bananas : piles) {
-            hours += (bananas + speed - 1) / speed; // ceil division
+            hours += (bananas + mid - 1) / mid; // ceil division , mid=speed
             if (hours > h) return false;
         }
         return true;
