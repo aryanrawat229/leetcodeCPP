@@ -1,14 +1,21 @@
 class Solution:
     def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
         n = len(nums)
-        temp = [0] * (n + 1)
+        i = 0
 
-        for num in nums:
-            temp[num] = 1
+        # Cyclic sort
+        while i < n:
+            correct_index = nums[i] - 1
 
-        result = []
-        for i in range(1, n + 1):
-            if temp[i] == 0:
-                result.append(i)
+            if nums[i] == nums[correct_index]:
+                i += 1
+            else:
+                nums[i], nums[correct_index] = nums[correct_index], nums[i]
 
-        return result
+        # Find missing numbers
+        ans = []
+        for j in range(n):
+            if nums[j] != j + 1:
+                ans.append(j + 1)
+
+        return ans
