@@ -1,13 +1,19 @@
 class Solution:
     def findDuplicates(self, nums: List[int]) -> List[int]:
-        ans = []
+        i = 0
+        n = len(nums)
 
-        for i in range(len(nums)):
-            index = abs(nums[i]) - 1
+        while i < n:
+            correct_index = nums[i] - 1
 
-            if nums[index] < 0:
-                ans.append(abs(nums[i]))
+            if nums[i] != nums[correct_index]:
+                nums[i], nums[correct_index] = nums[correct_index], nums[i]
             else:
-                nums[index] = -nums[index]
+                i += 1
+
+        ans = []
+        for j in range(n):
+            if nums[j] != j + 1:
+                ans.append(nums[j])
 
         return ans
